@@ -1,0 +1,8 @@
+synthetic_git:
+  base_dir: "data/synthetic_git"
+  branch: "${SYNTHETIC_GIT_BRANCH:-synthetic-git-dataset}"
+  base_branch: "${SYNTHETIC_GIT_BASE_BRANCH:-main}"
+  remote_url: "${SYNTHETIC_GIT_REMOTE:-}"
+  repo_owner: "${SYNTHETIC_GIT_REPO_OWNER:-maghams62}"
+  repo_name: "${SYNTHETIC_GIT_REPO_NAME:-oqoqo_test}"
+  commit_message: "chore(synthetic-git): refresh dataset"
