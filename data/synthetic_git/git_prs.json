@@ -1,0 +1,65 @@
+[
+  {
+    "id": "git_pr:core-api:2041",
+    "source_type": "git_pr",
+    "repo": "core-api",
+    "repo_url": "https://github.com/acme/core-api",
+    "branch": "main",
+    "pr_number": 2041,
+    "author": "alice",
+    "timestamp": "2025-11-25T14:00:00Z",
+    "title": "Add required vat_code to /v1/payments/create",
+    "body": "Breaking change: /v1/payments/create now requires vat_code for EU customers. Downstream services must update their integrations and doc owners should refresh guides.",
+    "merged": true,
+    "files_changed": [
+      "src/payments.py",
+      "openapi/payments.yaml"
+    ],
+    "text_for_embedding": "PR #2041: Add required vat_code to /v1/payments/create. Breaking change requiring vat_code for EU customers.",
+    "service_ids": [
+      "core-api-service"
+    ],
+    "component_ids": [
+      "core.payments"
+    ],
+    "changed_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "breaking_change",
+      "api_contract"
+    ]
+  },
+  {
+    "id": "git_pr:billing-service:118",
+    "source_type": "git_pr",
+    "repo": "billing-service",
+    "repo_url": "https://github.com/acme/billing-service",
+    "branch": "main",
+    "pr_number": 118,
+    "author": "bob",
+    "timestamp": "2025-11-26T12:30:00Z",
+    "title": "Fix 400 errors by adding vat_code to payments API calls",
+    "body": "We are seeing 400s from core-api after vat_code became mandatory. This PR threads vat_code through checkout and notes that docs still need a deeper refresh.",
+    "merged": true,
+    "files_changed": [
+      "src/core_api_client.py",
+      "src/checkout.py",
+      "docs/api_usage.md"
+    ],
+    "text_for_embedding": "PR #118: Fix 400 errors by adding vat_code to payments API calls. Adds vat_code payloads for EU carts but onboarding doc is still incomplete.",
+    "service_ids": [
+      "billing-service"
+    ],
+    "component_ids": [
+      "billing.checkout"
+    ],
+    "changed_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "incident",
+      "docs_followup"
+    ]
+  }
+]
