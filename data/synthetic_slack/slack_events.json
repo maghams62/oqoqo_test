@@ -1,0 +1,852 @@
+[
+  {
+    "id": "slack_message:#incidents:1764147600.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#incidents",
+    "channel_id": "C123INCIDENTS",
+    "thread_ts": "1764147600.00000",
+    "message_ts": "1764147600.00000",
+    "user": "dina",
+    "timestamp": "2025-11-26T09:00:00+00:00",
+    "text_raw": "\ud83d\udd25 Seeing a spike in 400s from `/v1/payments/create` for EU merchants since 09:00. Logs say `missing vat_code` but our docs still only show `amount` + `currency` \ud83e\udd14",
+    "service_ids": [
+      "core-api-service",
+      "billing-service"
+    ],
+    "component_ids": [
+      "core.payments",
+      "billing.checkout"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "incident",
+      "doc_confusion",
+      "api_change"
+    ]
+  },
+  {
+    "id": "slack_message:#incidents:1764147780.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#incidents",
+    "channel_id": "C123INCIDENTS",
+    "thread_ts": "1764147600.00000",
+    "message_ts": "1764147780.00000",
+    "user": "bob",
+    "timestamp": "2025-11-26T09:03:00+00:00",
+    "text_raw": "billing-service didn't ship anything today. Checkout payload still matches `billing_onboarding.md` (no vat_code field).",
+    "service_ids": [
+      "billing-service"
+    ],
+    "component_ids": [
+      "billing.checkout"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "incident",
+      "debugging"
+    ]
+  },
+  {
+    "id": "slack_message:#incidents:1764147960.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#incidents",
+    "channel_id": "C123INCIDENTS",
+    "thread_ts": "1764147600.00000",
+    "message_ts": "1764147960.00000",
+    "user": "alice",
+    "timestamp": "2025-11-26T09:06:00+00:00",
+    "text_raw": "We merged https://github.com/acme/core-api/pull/2041 yesterday\u2014`vat_code` is now required for EU regions. Docs portal update is still pending.",
+    "service_ids": [
+      "core-api-service"
+    ],
+    "component_ids": [
+      "core.payments"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "incident",
+      "api_change"
+    ]
+  },
+  {
+    "id": "slack_message:#incidents:1764148200.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#incidents",
+    "channel_id": "C123INCIDENTS",
+    "thread_ts": "1764147600.00000",
+    "message_ts": "1764148200.00000",
+    "user": "frank",
+    "timestamp": "2025-11-26T09:10:00+00:00",
+    "text_raw": "Treating this as sev2 until code + docs are fixed. @bob please prioritize sending vat_code from checkout.",
+    "service_ids": [
+      "core-api-service",
+      "billing-service"
+    ],
+    "component_ids": [
+      "core.payments",
+      "billing.checkout"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "incident",
+      "coordination"
+    ]
+  },
+  {
+    "id": "slack_message:#incidents:1764148380.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#incidents",
+    "channel_id": "C123INCIDENTS",
+    "thread_ts": "1764147600.00000",
+    "message_ts": "1764148380.00000",
+    "user": "dina",
+    "timestamp": "2025-11-26T09:13:00+00:00",
+    "text_raw": "Attaching merchant logs (`status=400`, `error=missing vat_code`). Support can't point to docs because onboarding guide is outdated.",
+    "service_ids": [
+      "billing-service"
+    ],
+    "component_ids": [
+      "billing.checkout"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "incident",
+      "doc_confusion"
+    ]
+  },
+  {
+    "id": "slack_message:#incidents:1764148680.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#incidents",
+    "channel_id": "C123INCIDENTS",
+    "thread_ts": "1764147600.00000",
+    "message_ts": "1764148680.00000",
+    "user": "bob",
+    "timestamp": "2025-11-26T09:18:00+00:00",
+    "text_raw": "Coding a patch now\u2014EU carts will pass vat_code + region flag. ETA 30m.",
+    "service_ids": [
+      "billing-service"
+    ],
+    "component_ids": [
+      "billing.checkout"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "incident",
+      "debugging"
+    ]
+  },
+  {
+    "id": "slack_message:#incidents:1764148920.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#incidents",
+    "channel_id": "C123INCIDENTS",
+    "thread_ts": "1764147600.00000",
+    "message_ts": "1764148920.00000",
+    "user": "alice",
+    "timestamp": "2025-11-26T09:22:00+00:00",
+    "text_raw": "I'll add follow-up tasks on the PR to refresh `docs/payments_api.md` and `docs/billing_flows.md`.",
+    "service_ids": [
+      "core-api-service",
+      "docs-portal"
+    ],
+    "component_ids": [
+      "core.payments",
+      "docs.payments"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "incident",
+      "doc_drift"
+    ]
+  },
+  {
+    "id": "slack_thread:#incidents:1764147600.00000",
+    "source_type": "slack_thread_summary",
+    "workspace": "acme",
+    "channel": "#incidents",
+    "channel_id": "C123INCIDENTS",
+    "thread_ts": "1764147600.00000",
+    "message_ts": "1764148920.00000",
+    "timestamp": "2025-11-26T09:22:00+00:00",
+    "start_timestamp": "2025-11-26T09:00:00+00:00",
+    "end_timestamp": "2025-11-26T09:22:00+00:00",
+    "text_raw": "Incident thread where Dina escalates EU merchants receiving 400 errors from /v1/payments/create. Alice confirms core-api now requires vat_code, Bob owns the billing fix, and everyone notes that docs/onboarding guides still show the old payload.",
+    "service_ids": [
+      "core-api-service",
+      "billing-service"
+    ],
+    "component_ids": [
+      "core.payments",
+      "billing.checkout"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "incident_summary",
+      "doc_drift",
+      "cross_service_impact"
+    ]
+  },
+  {
+    "id": "slack_message:#billing-dev:1764150000.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#billing-dev",
+    "channel_id": "C123BILLING",
+    "thread_ts": "1764150000.00000",
+    "message_ts": "1764150000.00000",
+    "user": "bob",
+    "timestamp": "2025-11-26T09:40:00+00:00",
+    "text_raw": "Anyone else still getting `400 Bad Request (missing vat_code)` from `core_api_client.create_payment` when `cart.region == 'EU'`?",
+    "service_ids": [
+      "billing-service"
+    ],
+    "component_ids": [
+      "billing.checkout"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "debugging",
+      "api_change"
+    ]
+  },
+  {
+    "id": "slack_message:#billing-dev:1764150240.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#billing-dev",
+    "channel_id": "C123BILLING",
+    "thread_ts": "1764150000.00000",
+    "message_ts": "1764150240.00000",
+    "user": "carol",
+    "timestamp": "2025-11-26T09:44:00+00:00",
+    "text_raw": "Yeah repro'd on staging. Our client still posts `{\"amount\": total, \"currency\": currency}` exactly how `billing_onboarding.md` documents it.",
+    "service_ids": [
+      "billing-service"
+    ],
+    "component_ids": [
+      "billing.checkout"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "debugging",
+      "doc_drift"
+    ]
+  },
+  {
+    "id": "slack_message:#billing-dev:1764150420.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#billing-dev",
+    "channel_id": "C123BILLING",
+    "thread_ts": "1764150000.00000",
+    "message_ts": "1764150420.00000",
+    "user": "alice",
+    "timestamp": "2025-11-26T09:47:00+00:00",
+    "text_raw": "`vat_code` became mandatory for EU in yesterday's deploy. Example payload: `{\"amount\":1000,\"currency\":\"EUR\",\"region\":\"EU\",\"vat_code\":\"DE123\"}`.",
+    "service_ids": [
+      "core-api-service"
+    ],
+    "component_ids": [
+      "core.payments"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "api_change"
+    ]
+  },
+  {
+    "id": "slack_message:#billing-dev:1764150720.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#billing-dev",
+    "channel_id": "C123BILLING",
+    "thread_ts": "1764150000.00000",
+    "message_ts": "1764150720.00000",
+    "user": "bob",
+    "timestamp": "2025-11-26T09:52:00+00:00",
+    "text_raw": "Cool, pushing a patch to thread vat_code through checkout + updating `src/core_api_client.py`. Will open a doc bug for `billing_onboarding.md`.",
+    "service_ids": [
+      "billing-service"
+    ],
+    "component_ids": [
+      "billing.checkout"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "debugging",
+      "doc_drift"
+    ]
+  },
+  {
+    "id": "slack_message:#billing-dev:1764151020.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#billing-dev",
+    "channel_id": "C123BILLING",
+    "thread_ts": "1764150000.00000",
+    "message_ts": "1764151020.00000",
+    "user": "frank",
+    "timestamp": "2025-11-26T09:57:00+00:00",
+    "text_raw": "Thanks team. After patch ships, let's sync with docs on the portal plus merchant guide updates.",
+    "service_ids": [
+      "billing-service",
+      "docs-portal"
+    ],
+    "component_ids": [
+      "billing.checkout",
+      "docs.payments"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "coordination",
+      "doc_drift"
+    ]
+  },
+  {
+    "id": "slack_thread:#billing-dev:1764150000.00000",
+    "source_type": "slack_thread_summary",
+    "workspace": "acme",
+    "channel": "#billing-dev",
+    "channel_id": "C123BILLING",
+    "thread_ts": "1764150000.00000",
+    "message_ts": "1764151020.00000",
+    "timestamp": "2025-11-26T09:57:00+00:00",
+    "start_timestamp": "2025-11-26T09:40:00+00:00",
+    "end_timestamp": "2025-11-26T09:57:00+00:00",
+    "text_raw": "Billing developers reproduce the 400 errors from /v1/payments/create, point out that `billing_onboarding.md` is stale, and agree to ship a vat_code patch plus doc tickets.",
+    "service_ids": [
+      "billing-service",
+      "core-api-service"
+    ],
+    "component_ids": [
+      "billing.checkout",
+      "core.payments"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "debugging_summary",
+      "doc_drift"
+    ]
+  },
+  {
+    "id": "slack_message:#docs:1764152400.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#docs",
+    "channel_id": "C123DOCS",
+    "thread_ts": "1764152400.00000",
+    "message_ts": "1764152400.00000",
+    "user": "eve",
+    "timestamp": "2025-11-26T10:20:00+00:00",
+    "text_raw": "Heads-up: `docs/payments_api.md` and `docs/billing_flows.md` still show `POST /v1/payments/create` without vat_code. Need authoritative text ASAP.",
+    "service_ids": [
+      "docs-portal"
+    ],
+    "component_ids": [
+      "docs.payments"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "doc_drift"
+    ]
+  },
+  {
+    "id": "slack_message:#docs:1764152700.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#docs",
+    "channel_id": "C123DOCS",
+    "thread_ts": "1764152400.00000",
+    "message_ts": "1764152700.00000",
+    "user": "alice",
+    "timestamp": "2025-11-26T10:25:00+00:00",
+    "text_raw": "From core-api side the contract is: amount, currency, region, vat_code (required for EU). I can drop a snippet for the reference section.",
+    "service_ids": [
+      "core-api-service"
+    ],
+    "component_ids": [
+      "core.payments"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "doc_drift",
+      "coordination"
+    ]
+  },
+  {
+    "id": "slack_message:#docs:1764152940.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#docs",
+    "channel_id": "C123DOCS",
+    "thread_ts": "1764152400.00000",
+    "message_ts": "1764152940.00000",
+    "user": "bob",
+    "timestamp": "2025-11-26T10:29:00+00:00",
+    "text_raw": "`billing_onboarding.md` also needs a rewrite because merchants copy that payload verbatim. I'll send you the new sample later today.",
+    "service_ids": [
+      "billing-service"
+    ],
+    "component_ids": [
+      "billing.checkout"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "doc_drift",
+      "coordination"
+    ]
+  },
+  {
+    "id": "slack_message:#docs:1764153120.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#docs",
+    "channel_id": "C123DOCS",
+    "thread_ts": "1764152400.00000",
+    "message_ts": "1764153120.00000",
+    "user": "eve",
+    "timestamp": "2025-11-26T10:32:00+00:00",
+    "text_raw": "Perfect\u2014I'll update the docs portal once both snippets land. \ud83d\ude4f",
+    "service_ids": [
+      "docs-portal"
+    ],
+    "component_ids": [
+      "docs.payments"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "doc_drift",
+      "coordination"
+    ]
+  },
+  {
+    "id": "slack_thread:#docs:1764152400.00000",
+    "source_type": "slack_thread_summary",
+    "workspace": "acme",
+    "channel": "#docs",
+    "channel_id": "C123DOCS",
+    "thread_ts": "1764152400.00000",
+    "message_ts": "1764153120.00000",
+    "timestamp": "2025-11-26T10:32:00+00:00",
+    "start_timestamp": "2025-11-26T10:20:00+00:00",
+    "end_timestamp": "2025-11-26T10:32:00+00:00",
+    "text_raw": "Eve highlights that `docs/payments_api.md` and `docs/billing_flows.md` still describe the old contract, coordinating updates with Alice and Bob.",
+    "service_ids": [
+      "docs-portal",
+      "core-api-service",
+      "billing-service"
+    ],
+    "component_ids": [
+      "docs.payments",
+      "core.payments",
+      "billing.checkout"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "doc_drift_summary"
+    ]
+  },
+  {
+    "id": "slack_message:#support:1764154800.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#support",
+    "channel_id": "C123SUPPORT",
+    "thread_ts": "1764154800.00000",
+    "message_ts": "1764154800.00000",
+    "user": "dina",
+    "timestamp": "2025-11-26T11:00:00+00:00",
+    "text_raw": "3 merchants filed tickets since 09:30 (EU only). Error snippet: `400 missing vat_code`. Tagging @bob @alice for visibility.",
+    "service_ids": [
+      "billing-service",
+      "core-api-service"
+    ],
+    "component_ids": [
+      "billing.checkout",
+      "core.payments"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "support_complaint",
+      "api_change"
+    ]
+  },
+  {
+    "id": "slack_message:#support:1764155160.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#support",
+    "channel_id": "C123SUPPORT",
+    "thread_ts": "1764154800.00000",
+    "message_ts": "1764155160.00000",
+    "user": "bob",
+    "timestamp": "2025-11-26T11:06:00+00:00",
+    "text_raw": "Fix is in review\u2014billing will now send vat_code for EU carts. Sorry for the churn!",
+    "service_ids": [
+      "billing-service"
+    ],
+    "component_ids": [
+      "billing.checkout"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "support_complaint",
+      "coordination"
+    ]
+  },
+  {
+    "id": "slack_message:#support:1764155400.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#support",
+    "channel_id": "C123SUPPORT",
+    "thread_ts": "1764154800.00000",
+    "message_ts": "1764155400.00000",
+    "user": "alice",
+    "timestamp": "2025-11-26T11:10:00+00:00",
+    "text_raw": "Docs were lagging but we're updating the portal + merchant guide so support has something accurate to link soon.",
+    "service_ids": [
+      "core-api-service",
+      "docs-portal"
+    ],
+    "component_ids": [
+      "core.payments",
+      "docs.payments"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "doc_drift",
+      "coordination"
+    ]
+  },
+  {
+    "id": "slack_thread:#support:1764154800.00000",
+    "source_type": "slack_thread_summary",
+    "workspace": "acme",
+    "channel": "#support",
+    "channel_id": "C123SUPPORT",
+    "thread_ts": "1764154800.00000",
+    "message_ts": "1764155400.00000",
+    "timestamp": "2025-11-26T11:10:00+00:00",
+    "start_timestamp": "2025-11-26T11:00:00+00:00",
+    "end_timestamp": "2025-11-26T11:10:00+00:00",
+    "text_raw": "Support shares merchant complaints about checkout failures, tags Alice/Bob, and references the vat_code change plus stale docs.",
+    "service_ids": [
+      "billing-service",
+      "core-api-service"
+    ],
+    "component_ids": [
+      "billing.checkout",
+      "core.payments"
+    ],
+    "related_apis": [
+      "/v1/payments/create"
+    ],
+    "labels": [
+      "support_summary",
+      "incident_related"
+    ]
+  },
+  {
+    "id": "slack_message:#notifications:1764156600.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#notifications",
+    "channel_id": "C123NOTIFY",
+    "thread_ts": "1764156600.00000",
+    "message_ts": "1764156600.00000",
+    "user": "carol",
+    "timestamp": "2025-11-26T11:30:00+00:00",
+    "text_raw": "FYI: receipts still go out via `/v1/notifications/send`. Seeing normal latency even while billing fixes vat_code.",
+    "service_ids": [
+      "notifications-service"
+    ],
+    "component_ids": [
+      "notifications.dispatch"
+    ],
+    "related_apis": [
+      "/v1/notifications/send"
+    ],
+    "labels": [
+      "status_update"
+    ]
+  },
+  {
+    "id": "slack_message:#notifications:1764156840.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#notifications",
+    "channel_id": "C123NOTIFY",
+    "thread_ts": "1764156600.00000",
+    "message_ts": "1764156840.00000",
+    "user": "alice",
+    "timestamp": "2025-11-26T11:34:00+00:00",
+    "text_raw": "Thanks! Core-api only touched payments this week, so notifications pipeline should stay green\u2014appreciate the confirmation.",
+    "service_ids": [
+      "core-api-service",
+      "notifications-service"
+    ],
+    "component_ids": [
+      "core.payments",
+      "notifications.dispatch"
+    ],
+    "related_apis": [
+      "/v1/notifications/send"
+    ],
+    "labels": [
+      "coordination"
+    ]
+  },
+  {
+    "id": "slack_message:#notifications:1764156960.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#notifications",
+    "channel_id": "C123NOTIFY",
+    "thread_ts": "1764156600.00000",
+    "message_ts": "1764156960.00000",
+    "user": "frank",
+    "timestamp": "2025-11-26T11:36:00+00:00",
+    "text_raw": "Log the check in ops runbook so we have an audit trail. \ud83d\udc4d",
+    "service_ids": [
+      "notifications-service"
+    ],
+    "component_ids": [
+      "notifications.dispatch"
+    ],
+    "related_apis": [
+      "/v1/notifications/send"
+    ],
+    "labels": [
+      "coordination"
+    ]
+  },
+  {
+    "id": "slack_message:#notifications:1764157200.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#notifications",
+    "channel_id": "C123NOTIFY",
+    "thread_ts": "1764156600.00000",
+    "message_ts": "1764157200.00000",
+    "user": "eve",
+    "timestamp": "2025-11-26T11:40:00+00:00",
+    "text_raw": "[Docs alert] `docs/notification_playbook.md` still describes `/v1/notifications/send` without `template_version`. Need updated contract so graph ingest has the right metadata.",
+    "service_ids": [
+      "docs-portal",
+      "notifications-service"
+    ],
+    "component_ids": [
+      "docs.notifications",
+      "notifications.dispatch"
+    ],
+    "related_apis": [
+      "/v1/notifications/send"
+    ],
+    "labels": [
+      "doc_drift",
+      "doc_alert"
+    ]
+  },
+  {
+    "id": "slack_message:#notifications:1764157380.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#notifications",
+    "channel_id": "C123NOTIFY",
+    "thread_ts": "1764156600.00000",
+    "message_ts": "1764157380.00000",
+    "user": "dave",
+    "timestamp": "2025-11-26T11:43:00+00:00",
+    "text_raw": "Shipped PR 142 this morning\u2014`send_notification` now requires `template_version` and we log it for compliance. Docs still untouched.",
+    "service_ids": [
+      "notifications-service"
+    ],
+    "component_ids": [
+      "notifications.dispatch"
+    ],
+    "related_apis": [
+      "/v1/notifications/send"
+    ],
+    "labels": [
+      "doc_drift",
+      "api_change"
+    ]
+  },
+  {
+    "id": "slack_message:#notifications:1764157500.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#notifications",
+    "channel_id": "C123NOTIFY",
+    "thread_ts": "1764156600.00000",
+    "message_ts": "1764157500.00000",
+    "user": "alice",
+    "timestamp": "2025-11-26T11:45:00+00:00",
+    "text_raw": "I'll sync with docs after lunch\u2014need to update both the portal and `docs/notification_playbook.md` so slash summaries keep the topology straight.",
+    "service_ids": [
+      "core-api-service",
+      "docs-portal"
+    ],
+    "component_ids": [
+      "core.payments",
+      "docs.notifications"
+    ],
+    "related_apis": [
+      "/v1/notifications/send"
+    ],
+    "labels": [
+      "doc_drift",
+      "coordination"
+    ]
+  },
+  {
+    "id": "slack_thread:#notifications:1764156600.00000",
+    "source_type": "slack_thread_summary",
+    "workspace": "acme",
+    "channel": "#notifications",
+    "channel_id": "C123NOTIFY",
+    "thread_ts": "1764156600.00000",
+    "message_ts": "1764156960.00000",
+    "timestamp": "2025-11-26T11:36:00+00:00",
+    "start_timestamp": "2025-11-26T11:30:00+00:00",
+    "end_timestamp": "2025-11-26T11:45:00+00:00",
+    "text_raw": "Notifications thread starts as a status check, then Eve raises a docs alert that `/v1/notifications/send` now needs `template_version`. Dave links PR 142, Alice volunteers to coordinate doc fixes so graph ingest sees the right metadata.",
+    "service_ids": [
+      "notifications-service",
+      "core-api-service",
+      "docs-portal"
+    ],
+    "component_ids": [
+      "notifications.dispatch",
+      "core.payments",
+      "docs.notifications"
+    ],
+    "related_apis": [
+      "/v1/notifications/send"
+    ],
+    "labels": [
+      "status_update",
+      "doc_drift_summary"
+    ]
+  },
+  {
+    "id": "slack_message:#core-api:1764158400.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#core-api",
+    "channel_id": "C123COREAPI",
+    "thread_ts": "1764158400.00000",
+    "message_ts": "1764158400.00000",
+    "user": "carol",
+    "timestamp": "2025-11-26T12:00:00+00:00",
+    "text_raw": "Anyone mind if I drop webhook retry logs to DEBUG? Channel is \ud83d\udd25 right now.",
+    "service_ids": [
+      "core-api-service"
+    ],
+    "component_ids": [
+      "core.webhooks"
+    ],
+    "related_apis": [],
+    "labels": [
+      "noise"
+    ]
+  },
+  {
+    "id": "slack_message:#core-api:1764158580.00000",
+    "source_type": "slack_message",
+    "workspace": "acme",
+    "channel": "#core-api",
+    "channel_id": "C123COREAPI",
+    "thread_ts": "1764158400.00000",
+    "message_ts": "1764158580.00000",
+    "user": "frank",
+    "timestamp": "2025-11-26T12:03:00+00:00",
+    "text_raw": "Do it, but only on staging. Prod still needs INFO until after Q4.",
+    "service_ids": [
+      "core-api-service"
+    ],
+    "component_ids": [
+      "core.webhooks"
+    ],
+    "related_apis": [],
+    "labels": [
+      "noise"
+    ]
+  },
+  {
+    "id": "slack_thread:#core-api:1764158400.00000",
+    "source_type": "slack_thread_summary",
+    "workspace": "acme",
+    "channel": "#core-api",
+    "channel_id": "C123COREAPI",
+    "thread_ts": "1764158400.00000",
+    "message_ts": "1764158580.00000",
+    "timestamp": "2025-11-26T12:03:00+00:00",
+    "start_timestamp": "2025-11-26T12:00:00+00:00",
+    "end_timestamp": "2025-11-26T12:03:00+00:00",
+    "text_raw": "Low-signal chatter about log levels for webhook retries.",
+    "service_ids": [
+      "core-api-service"
+    ],
+    "component_ids": [
+      "core.webhooks"
+    ],
+    "related_apis": [],
+    "labels": [
+      "noise"
+    ]
+  }
+]
