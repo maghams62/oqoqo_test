@@ -1,0 +1,188 @@
+[
+  {
+    "id": "ticket_atlas_vat_contract_gap",
+    "project_id": "project_atlas",
+    "component_ids": ["core.payments", "billing.checkout", "docs.payments"],
+    "source": "linear",
+    "status": "in_progress",
+    "severity": "high",
+    "title": "VAT docs say vat_code optional but API rejects missing field",
+    "summary": "EU merchants cannot charge cards because /v1/payments/create now requires vat_code while docs + onboarding sample omit it.",
+    "created_at": "2025-11-26T09:05:00Z",
+    "updated_at": "2025-11-26T09:45:00Z",
+    "related_commit_ids": [
+      "git_commit:core-api:7c4ca1b24e4a8edf03bfd1db5dd6f90eeaaa7bd9",
+      "git_pr:core-api:2041"
+    ],
+    "related_slack_ids": ["slack_thread:#incidents:1764147600.00000"],
+    "customer_impact": "EU checkout blocked with 400 missing vat_code",
+    "tags": ["vat", "docs_drift", "sev2"]
+  },
+  {
+    "id": "ticket_atlas_vat_error_copy",
+    "project_id": "project_atlas",
+    "component_ids": ["billing.checkout", "docs.payments"],
+    "source": "linear",
+    "status": "triage",
+    "severity": "medium",
+    "title": "Error copy still references legacy VAT payload",
+    "summary": "Merchants receive \"invalid request\" with no VAT-specific hint; docs + runbook never show the new error contract.",
+    "created_at": "2025-11-26T09:20:00Z",
+    "updated_at": "2025-11-26T09:55:00Z",
+    "related_commit_ids": [
+      "git_commit:billing-service:1a50414e0088b00cf178a329cc2f4df75a3b55ce"
+    ],
+    "related_slack_ids": ["slack_thread:#billing-dev:1764150000.00000"],
+    "customer_impact": "Support cannot point to accurate remediation steps",
+    "tags": ["vat", "error_copy"]
+  },
+  {
+    "id": "ticket_atlas_sandbox_prod_split",
+    "project_id": "project_atlas",
+    "component_ids": ["core.payments", "billing.checkout"],
+    "source": "linear",
+    "status": "open",
+    "severity": "medium",
+    "title": "Sandbox accepts old VAT payload, prod rejects it",
+    "summary": "Sandbox still allows legacy payload while prod enforces vat_code, creating inconsistent onboarding experience.",
+    "created_at": "2025-11-26T09:35:00Z",
+    "updated_at": "2025-11-26T09:50:00Z",
+    "related_commit_ids": [
+      "git_commit:core-api:4e065192edcd2641290a931ef8c8d0b2a78c3d02",
+      "git_commit:core-api:7c4ca1b24e4a8edf03bfd1db5dd6f90eeaaa7bd9"
+    ],
+    "related_slack_ids": ["slack_thread:#docs:1764152400.00000"],
+    "customer_impact": "Partners testing in sandbox miss the breaking change",
+    "tags": ["sandbox", "prod"]
+  },
+  {
+    "id": "ticket_atlas_support_playbook_gap",
+    "project_id": "project_atlas",
+    "component_ids": ["docs.payments"],
+    "source": "linear",
+    "status": "in_progress",
+    "severity": "medium",
+    "title": "Support playbook lacks EU VAT escalation steps",
+    "summary": "Support cannot link accurate instructions because merchant guide still shows two-field payload.",
+    "created_at": "2025-11-26T10:15:00Z",
+    "updated_at": "2025-11-26T11:05:00Z",
+    "related_commit_ids": [
+      "git_commit:docs-portal:fbba8053e0a93857b8a366b21eac982b9d922f9a"
+    ],
+    "related_slack_ids": ["slack_thread:#support:1764154800.00000"],
+    "customer_impact": "Support workload spikes because they have to explain hidden VAT requirements",
+    "tags": ["support", "runbook"]
+  },
+  {
+    "id": "ticket_atlas_docs_refresh_shipped",
+    "project_id": "project_atlas",
+    "component_ids": ["docs.payments"],
+    "source": "linear",
+    "status": "resolved",
+    "severity": "low",
+    "title": "VAT docs refresh merged",
+    "summary": "Docs portal received partial VAT updates earlier in the week; need verification before closing drift incident.",
+    "created_at": "2025-11-25T18:00:00Z",
+    "updated_at": "2025-11-26T08:30:00Z",
+    "related_commit_ids": [
+      "git_commit:docs-portal:fbba8053e0a93857b8a366b21eac982b9d922f9a",
+      "git_commit:docs-portal:288ab14479c714ca87ad72f8e2673f5f8e45e574"
+    ],
+    "related_slack_ids": [],
+    "customer_impact": "Docs reviewers confirmed partial fix but awaiting full sample update",
+    "tags": ["docs", "refresh"]
+  },
+  {
+    "id": "ticket_nimbus_template_version_gap",
+    "project_id": "project_nimbus",
+    "component_ids": ["notifications.dispatch", "docs.notifications"],
+    "source": "linear",
+    "status": "open",
+    "severity": "high",
+    "title": "Docs lack template_version requirement",
+    "summary": "Compliance asks for template_version logging yet notification playbook still shows legacy payload.",
+    "created_at": "2025-11-26T11:32:00Z",
+    "updated_at": "2025-11-26T11:55:00Z",
+    "related_commit_ids": [
+      "git_commit:notifications-service:f7c3c2d96f2c4f8090034b876b78dfb6f61c1e90",
+      "git_pr:notifications-service:142"
+    ],
+    "related_slack_ids": ["slack_thread:#notifications:1764156600.00000"],
+    "customer_impact": "Receipts missing template ids cannot be audited",
+    "tags": ["template_version", "doc_drift"]
+  },
+  {
+    "id": "ticket_nimbus_retry_policy_unknown",
+    "project_id": "project_nimbus",
+    "component_ids": ["notifications.dispatch"],
+    "source": "linear",
+    "status": "triage",
+    "severity": "medium",
+    "title": "Retry/backoff policy undocumented",
+    "summary": "Operators cannot answer customer questions about notification retry cadence because docs omit the new jitter window.",
+    "created_at": "2025-11-26T11:48:00Z",
+    "updated_at": "2025-11-26T12:10:00Z",
+    "related_commit_ids": [
+      "git_commit:notifications-service:d79dae8a95e6d6273f6ee04b498c3b7d00fcd79c",
+      "git_commit:notifications-service:884c5b85de003079d57365b7aa3690b09e62b727"
+    ],
+    "related_slack_ids": ["slack_thread:#notifications:1764156600.00000"],
+    "customer_impact": "Customers retry manually causing duplicate sends",
+    "tags": ["retry", "docs"]
+  },
+  {
+    "id": "ticket_nimbus_config_ui_mismatch",
+    "project_id": "project_nimbus",
+    "component_ids": ["notifications.dispatch", "docs.notifications"],
+    "source": "linear",
+    "status": "open",
+    "severity": "low",
+    "title": "Config UI labels differ from API keys",
+    "summary": "Ops UI still shows legacy names while API requires template_version and channelOverride fields.",
+    "created_at": "2025-11-26T12:05:00Z",
+    "updated_at": "2025-11-26T12:25:00Z",
+    "related_commit_ids": [
+      "git_commit:docs-portal:5ab13b677d8a43c7bf043be8a81a79931a4ed929"
+    ],
+    "related_slack_ids": ["slack_thread:#notifications:1764156600.00000"],
+    "customer_impact": "Developers toggle wrong setting because docs + UI disagree",
+    "tags": ["ui", "api"]
+  },
+  {
+    "id": "ticket_nimbus_onboarding_copy",
+    "project_id": "project_nimbus",
+    "component_ids": ["docs.notifications"],
+    "source": "linear",
+    "status": "in_progress",
+    "severity": "medium",
+    "title": "Onboarding email still references deprecated CTA",
+    "summary": "Welcome email template in docs shows legacy CTA even after notifications overhaul.",
+    "created_at": "2025-11-26T12:20:00Z",
+    "updated_at": "2025-11-26T12:40:00Z",
+    "related_commit_ids": [
+      "git_commit:notifications-service:d79dae8a95e6d6273f6ee04b498c3b7d00fcd79c",
+      "git_commit:docs-portal:5ab13b677d8a43c7bf043be8a81a79931a4ed929"
+    ],
+    "related_slack_ids": [],
+    "customer_impact": "Customer success still screenshots old CTA for onboarding",
+    "tags": ["onboarding", "docs"]
+  },
+  {
+    "id": "ticket_nimbus_sms_promise",
+    "project_id": "project_nimbus",
+    "component_ids": ["notifications.dispatch"],
+    "source": "linear",
+    "status": "triage",
+    "severity": "medium",
+    "title": "Docs promise SMS fallbacks that were removed",
+    "summary": "Runbook still claims password reset triggers SMS but service only emails; customers open incidents weekly.",
+    "created_at": "2025-11-26T12:32:00Z",
+    "updated_at": "2025-11-26T12:50:00Z",
+    "related_commit_ids": [
+      "git_commit:notifications-service:f7c3c2d96f2c4f8090034b876b78dfb6f61c1e90"
+    ],
+    "related_slack_ids": ["slack_thread:#notifications:1764156600.00000"],
+    "customer_impact": "Support keeps promising SMS fallback that no longer exists",
+    "tags": ["sms", "docs_drift"]
+  }
+]
